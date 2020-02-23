@@ -7,19 +7,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>about - jjw&#39;s blog</title>
+<title>Tag: deeplearning - jjw&#39;s blog</title>
 
 
-    <meta name="description" content="I’m interested in time series data and now mainly focusing on electrocardiogram related research. I am working at VUNO since 2018 as a deep learning researcher. I hope my research will contribute to">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://wlsdnen.github.io/about/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="jjw&#39;s blog">
+<meta property="og:url" content="http://wlsdnen.github.io/tags/deeplearning/index.html">
 <meta property="og:site_name" content="jjw&#39;s blog">
-<meta property="og:description" content="I’m interested in time series data and now mainly focusing on electrocardiogram related research. I am working at VUNO since 2018 as a deep learning researcher. I hope my research will contribute to">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://wlsdnen.github.io/images/og_image.png">
-<meta property="article:published_time" content="2020-02-22T05:37:22.000Z">
-<meta property="article:modified_time" content="2020-02-23T01:20:29.882Z">
 <meta property="article:author" content="Jinwoo Jo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://wlsdnen.github.io/images/og_image.png">
@@ -80,7 +76,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/my-logo.svg" alt="about" height="28">
+                <img src="/images/my-logo.svg" alt="jjw&#39;s blog" height="28">
             
             </a>
         </div>
@@ -100,7 +96,7 @@
                 <a class="navbar-item"
                 href="/tags">Tags</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/about">About</a>
                 
             </div>
@@ -121,18 +117,87 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">deeplearning</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
 <div class="card">
     
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-23T11:18:35.000Z">2020-02-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Deep-Learning/">Deep Learning</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Deep-Learning/Model/">Model</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1129 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                about
+                <a class="has-link-black-ter" href="/2020/02/23/Resnet-1-Deep-Residual-Learning-for-Image-Recognition/">Resnet(1) - Deep Residual Learning for Image Recognition</a>
             
         </h1>
         <div class="content">
-            <p> I’m interested in time series data and now mainly focusing on <a href="https://github.com/wlsdnen/ecg-research">electrocardiogram related research</a>. I am working at <a href="http://vuno.co">VUNO</a> since 2018 as a deep learning researcher. I hope my research will contribute to saving people’s lives.</p>
+            <p>Resnet 모델을 제안한 Kaiming He가 쓴 논문은 총 두 편이 있습니다.</p>
+<ol>
+<li><a href="https://arxiv.org/abs/1512.03385">Deep residual learning for image recognition. CVPR. (2016)</a></li>
+<li><a href="https://arxiv.org/abs/1603.05027">Identity mappings in deep residual networks. ECCV. (2016)</a></li>
+</ol>
+<p>이 가운데 첫 번째 논문 ‘Deep residual learning for image recognition’에 대하여 다루어보고자 합니다.</p>
+<p>Resnet은 2015년 ILSVRC에서 우승을 차지한 모델입니다.</p>
+<p>아래 그림과 같이, 이전 대회에서 우승한 GoogleNet의 22개 층보다 약 7배 더 많은 152개 층을 쌓아서 학습하는데 성공하였고 3.57% Error rate으로 Imagenet 대회 우승을 차지하였습니다.</p>
+<center><img src="../image/200223-resnet1/01-revolution-of-depth.png" width=640 height=360></center>
+
+<p>본 논문에서는 이와 같은 성과를 가능하게한 ‘Residual learning’ 에 대하여 이론적으로 정의하고 실험적으로 증명합니다.</p>
+<h3 id="Degradation-problem"><a href="#Degradation-problem" class="headerlink" title="Degradation problem"></a><strong>Degradation problem</strong></h3><p>Residual learning이 나오게 된 배경은 <em>degradation problem</em>에서부터 시작합니다.</p>
+<p>일반적으로 모델의 depth가 깊어지면 과잉 학습으로 인하여 모델이 학습 데이터에 overfit이 된다고 알려져 있습니다.</p>
+<p>그러나 depth가 더욱 깊어지면 그와 반대되는 현상이 발생합니다. </p>
+<p>아래 그림과 같이, 층을 많이 쌓은 모델이 적게 쌓은 모델보다 학습 에러가 더 높게 나타나면서 underfit 되는 현상이 발생합니다. 즉, 모델이 학습을 제대로 해내지 못합니다.</p>
+<center><img src="../image/200223-resnet1/02-experiment-degradation.png" width=640></center>
+
+<p>Training error (left) and test error (right) on CIFAR-10 with 20-layer and 56-layer “plain” networks. The deeper network has higher training error, and thus test error.</p>
+<p>저자는 이와 같은 현상을 <em>Degradation problem</em>이라고 정의하였고, 이를 하나의 실험을 통해서 보여줍니다.</p>
+<center><img src="../image/200223-resnet1/03-experiment-degradation.png"></center>
+
+<p>실험은 다음과 같습니다.</p>
+<p>우선 층 수가 적은 모델(왼쪽)을 학습한 뒤, 그 모델을 그대로 복사한 모델을 생성합니다. </p>
+<p>복사한 모델의 중간, 중간에는 입력 값을 그대로 출력하는 identity mapping을 수행하는 층을 추가하여 전체 층이 더 깊은 모델 (오른쪽)로 만들어 줍니다.</p>
+<p>전체 층 수는 늘었지만, 입력을 그대로 출력하는 층들을 추가한 것입니다. 따라서 우리는 이 모델을 학습하면 최소한 이전 모델보다 성능이 나쁘지는 않을 것이라고 기대할 수 있습니다. </p>
+<p>그러나 실제 실험결과는 우리의 기대와 다르게 학습 에러가 더 높게 나타나면서 앞서 정의한 degradation problem이 발생합니다. </p>
+<p>저자는 실험을 통해서 본 바와 같이 깊은 모델을 학습하는 것은 매우 어렵다고 말하면서, 이를 해결하는 방법으로 Identity mapping을 이용한 <strong>Residual learning</strong>을 제안합니다.</p>
+<h3 id="Residual-Learning"><a href="#Residual-Learning" class="headerlink" title="Residual Learning"></a><strong>Residual Learning</strong></h3><p>‘Residual’이란 우리말로 ‘잔차’라고 표현하며, 잔차란 예측값과 실제값의 차이로 생기는 값을 의미합니다. 즉 딥러닝에서 에러, 손실 값이라고 말할 수 있습니다.<br>실제 값 10을 우리가 8로 예측했다면 잔차는 2가 됩니다.<br>따라서 아래 그림과 같이, 실제 값(Actual)은 우리의 예측 값(x)과 잔차(residual)의 합으로 표현할 수 있습니다.</p>
+<center><img src="../image/200223-resnet1/04-residual.png" width=256></center>
+
+<p>우리의 목표는 예측값을 실제값과 같게 만드는 것입니다.<br>따라서 예측값과 실제값의 차이, 즉 잔차를 줄이는 방향으로 학습을 하면 되는 것입니다.<br>실제값 10을 8로 예측했다면 잔차 2에 대해서만 학습하면 되는 것이고, 10으로 예측 했다면 우리는 잔차를 학습할 필요가 없습니다. 이렇게 잔차를 학습하는 학습 방식을  <strong>Residual Learning</strong> 이라고 합니다.</p>
+<p>기존의 딥러닝에서는 입력값(x)을 실제값(y)로 맵핑하는 함수 H(x)를 찾는 것으로<br>H(x) - y를 최소화 하는 방향으로 학습을 진행하였습니다. 반면 Resnet에서는 H(x) - x를 학습하는 것으로 재정의한 것입니다. 입력과 출력의 잔차를 F(x) = H(x) - x라고 정의하고 이 F(x)를 찾는 모델을 학습하는 것입니다. 결과적으로 출력 H(x)는 아래와 같이 F(x) + x가 됩니다.</p>
+<h3 id="Identity-mapping-with-shortcut"><a href="#Identity-mapping-with-shortcut" class="headerlink" title="Identity mapping with shortcut"></a><strong>Identity mapping with shortcut</strong></h3><!-- ![](../image/) -->
+
+<p>(계속 …)</p>
+<p><strong>References</strong></p>
+<ol>
+<li><a href="http://ethen8181.github.io/machine-learning/keras/resnet_cam/resnet_cam.html">resnet_cam</a></li>
+<li><a href="https://datascienceschool.net/view-notebook/958022040c544257aa7ba88643d6c032/">데이터 사이언스 스쿨</a></li>
+</ol>
 
         </div>
         
@@ -147,29 +212,7 @@
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'http://wlsdnen.github.io/about/index.html';
-        this.page.identifier = 'about/index.html';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'jojinwoo' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
-</div>
 </div>
                 
                 
@@ -460,7 +503,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/my-logo.svg" alt="about" height="28">
+                    <img src="/images/my-logo.svg" alt="jjw&#39;s blog" height="28">
                 
                 </a>
                 <p class="is-size-7">
